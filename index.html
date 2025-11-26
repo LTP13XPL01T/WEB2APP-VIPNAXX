@@ -1,662 +1,355 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Web2APK Builder Premium - GyzenLyoraa</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Konversi website ke APK dengan mudah dan gratis"> 
-  <meta name="google-site-verification" content="mpZXVrORh_EsUHsFjdu0GumjK0Utz1y-Q5KM7buBxAY" />
-  <meta name="keywords" content="website, toapp, konvert, web2app, konvertWebToapk, konverting, konvert, free">
-  <meta name="author" content="Reseller Gaming">
-  <meta property="og:title" content="Web2App Builder Premium">
-  <meta property="og:description" content="Konversi link website ke APK dengan fitur premium">
-  <meta property="og:image" content="https://files.catbox.moe/dcujb8.jpg">
-  <meta property="og:url" content="www.web2app.zone.id">
-  <meta property="og:type" content="website">
-  <meta name="robots" content="index, follow">
-  <link rel="shortcut icon" href="https://files.catbox.moe/dcujb8.jpg" type="image/x-icon">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --primary: #4361ee;
-      --primary-dark: #3a56d4;
-      --primary-light: #e0e7ff;
-      --danger: #ef4444;
-      --dark: #1e293b;
-      --darker: #0f172a;
-      --light: #f8fafc;
-      --gray: #64748b;
-      --gray-light: #e2e8f0;
-      --success: #22c55e;
-      --accent: #8b5cf6;
-      --accent-gradient: linear-gradient(135deg, #4361ee, #8b5cf6);
-      --glow: 0 0 15px rgba(67, 97, 238, 0.5);
-    }
-    
-    * { 
-      box-sizing: border-box; 
-      margin: 0; 
-      padding: 0; 
-    }
-    
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, var(--darker), #1e293b);
-      color: var(--light);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      padding: 2rem 1rem;
-      position: relative;
-      overflow-x: hidden;
-    }
-    
-    body::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: 
-        radial-gradient(circle at 10% 20%, rgba(67, 97, 238, 0.1) 0%, transparent 20%),
-        radial-gradient(circle at 90% 70%, rgba(139, 92, 246, 0.1) 0%, transparent 20%),
-        radial-gradient(circle at 50% 30%, rgba(34, 197, 94, 0.05) 0%, transparent 20%);
-      z-index: -1;
-    }
-    
-    .floating-element {
-      position: absolute;
-      border-radius: 50%;
-      background: rgba(67, 97, 238, 0.1);
-      animation: float 15s infinite ease-in-out;
-      z-index: -1;
-    }
-    
-    .floating-element:nth-child(1) { width: 100px; height: 100px; top: 10%; left: 5%; animation-delay: 0s; }
-    .floating-element:nth-child(2) { width: 150px; height: 150px; top: 70%; left: 80%; animation-delay: -5s; }
-    .floating-element:nth-child(3) { width: 80px; height: 80px; top: 20%; left: 85%; animation-delay: -10s; }
-    .floating-element:nth-child(4) { width: 120px; height: 120px; top: 75%; left: 10%; animation-delay: -7s; }
-    
-    @keyframes float {
-      0%, 100% { transform: translateY(0) rotate(0deg); }
-      33% { transform: translateY(-20px) rotate(10deg); }
-      66% { transform: translateY(20px) rotate(-10deg); }
-    }
-    
-    .card {
-      width: 100%;
-      max-width: 480px;
-      background: rgba(30, 41, 59, 0.8);
-      backdrop-filter: blur(10px);
-      border-radius: 1.5rem;
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3), 0 0 30px rgba(67, 97, 238, 0.2);
-      padding: 2.5rem;
-      opacity: 0;
-      transform: translateY(30px) scale(0.95);
-      animation: cardEntrance 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .card::before {
-      content: '';
-      position: absolute;
-      top: -50%; left: -50%; width: 200%; height: 200%;
-      background: linear-gradient(45deg, transparent, rgba(255,255,255,0.05), transparent);
-      transform: rotate(45deg);
-      animation: shine 6s infinite;
-      pointer-events: none;
-    }
-    
-    @keyframes cardEntrance { to { opacity: 1; transform: translateY(0) scale(1); } }
-    @keyframes shine { 0% { transform: rotate(45deg) translateX(-100%); } 20% { transform: rotate(45deg) translateX(200%); } 100% { transform: rotate(45deg) translateX(200%); } }
-    
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      justify-content: center;
-      margin-bottom: 2rem;
-    }
-    
-    .logo-icon { 
-      font-size: 2rem; 
-      color: var(--primary);
-      background: var(--accent-gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      filter: drop-shadow(0 0 10px rgba(67, 97, 238, 0.5));
-      animation: pulse 2s infinite ease-in-out;
-    }
-    
-    @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
-    
-    .logo-text { 
-      font-size: 1.75rem; 
-      font-weight: 700; 
-      background: var(--accent-gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    
-    .logo-text::after {
-      content: '';
-      position: absolute;
-      bottom: -5px;
-      left: 0;
-      width: 100%;
-      height: 2px;
-      background: var(--accent-gradient);
-      transform: scaleX(0);
-      transform-origin: right;
-      transition: transform 0.5s ease;
-    }
-    
-    .logo:hover .logo-text::after {
-      transform: scaleX(1);
-      transform-origin: left;
-    }
-    
-    .form-group { 
-      margin-bottom: 1.5rem; 
-      position: relative;
-      opacity: 0;
-      transform: translateX(-20px);
-      animation: fadeInRight 0.6s forwards;
-    }
-    
-    .form-group:nth-child(1) { animation-delay: 0.2s; }
-    .form-group:nth-child(2) { animation-delay: 0.3s; }
-    .form-group:nth-child(3) { animation-delay: 0.4s; }
-    .form-group:nth-child(4) { animation-delay: 0.5s; }
-    
-    @keyframes fadeInRight { to { opacity: 1; transform: translateX(0); } }
-    
-    .form-label {
-      display: block;
-      margin-bottom: .75rem;
-      font-size: .95rem;
-      font-weight: 500;
-      color: var(--light);
-    }
-    
-    .form-control-container { position: relative; }
-    
-    .form-control {
-      width: 100%;
-      padding: 1rem 1rem 1rem 3rem;
-      background: rgba(15, 23, 42, 0.5);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: .75rem;
-      font-size: 1rem;
-      color: var(--light);
-      transition: all 0.3s ease;
-      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
-    }
-    
-    .form-control::placeholder { color: rgba(255, 255, 255, 0.4); }
-    
-    .form-control:focus {
-      outline: none;
-      border-color: var(--primary);
-      box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.3), inset 0 2px 4px rgba(0, 0, 0, 0.2);
-    }
-    
-    .input-icon {
-      position: absolute;
-      top: 50%;
-      left: 1rem;
-      transform: translateY(-50%);
-      color: var(--gray);
-      font-size: 1.1rem;
-      transition: all 0.3s ease;
-      z-index: 2;
-    }
-    
-    .form-control:focus + .input-icon { color: var(--primary); }
-    
-    .btn {
-      width: 100%;
-      padding: 1.1rem;
-      border-radius: .75rem;
-      font-size: 1.05rem;
-      font-weight: 600;
-      cursor: pointer;
-      border: none;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: .75rem;
-      transition: all 0.4s ease;
-      position: relative;
-      overflow: hidden;
-      background: var(--accent-gradient);
-      color: white;
-      box-shadow: 0 5px 15px rgba(67, 97, 238, 0.4);
-      opacity: 0;
-      animation: fadeInUp 0.6s 0.6s forwards;
-    }
-    
-    .btn::before {
-      content: '';
-      position: absolute;
-      top: 0; left: -100%; width: 100%; height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-      transition: all 0.6s ease;
-    }
-    
-    .btn:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(67, 97, 238, 0.6); }
-    .btn:hover::before { left: 100%; }
-    .btn:active { transform: translateY(0); box-shadow: 0 3px 10px rgba(67, 97, 238, 0.4); }
-    .btn:disabled { background: var(--gray); color: var(--gray-light); cursor: not-allowed; transform: none; box-shadow: none; }
-    .btn:disabled:hover::before { display: none; }
-    
-    .alert {
-      padding: 1.1rem;
-      border-left: 4px solid var(--danger);
-      background: rgba(239, 68, 68, 0.15);
-      color: var(--light);
-      border-radius: .75rem;
-      margin-bottom: 1.5rem;
-      font-size: .95rem;
-      display: flex;
-      align-items: center;
-      gap: .75rem;
-      backdrop-filter: blur(5px);
-      animation: shake 0.5s ease;
-    }
-    
-    @keyframes shake { 0%,100%{transform:translateX(0)} 20%,60%{transform:translateX(-5px)} 40%,80%{transform:translateX(5px)} }
-    
-    .hidden { display: none; opacity: 0; transform: translateY(10px); transition: all 0.3s ease; }
-    
-    .progress-box {
-      text-align: center;
-      margin-top: 2rem;
-      font-size: 1rem;
-      color: var(--light);
-      opacity: 0;
-      transform: scale(0.9);
-      transition: all 0.5s ease;
-    }
-    
-    .progress-box.show { opacity: 1; transform: scale(1); }
-    
-    .progress-bar {
-      height: 8px;
-      background: rgba(255,255,255,0.1);
-      border-radius: 4px;
-      overflow: hidden;
-      margin-top: 1rem;
-      position: relative;
-    }
-    
-    .progress-bar div {
-      height: 100%;
-      background: var(--accent-gradient);
-      width: 0%;
-      transition: width 0.5s ease;
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .progress-bar div::after {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-      animation: progressShine 1.5s infinite;
-    }
-    
-    @keyframes progressShine { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
-    
-    .footer {
-      margin-top: 2.5rem;
-      text-align: center;
-      font-size: .9rem;
-      color: var(--gray);
-      opacity: 0;
-      animation: fadeIn 1s 1s forwards;
-    }
-    
-    .footer a { color: var(--primary-light); text-decoration: none; position: relative; }
-    .footer a::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 1px; background: var(--primary-light); transition: width 0.3s ease; }
-    .footer a:hover::after { width: 100%; }
-    
-    .upload-status {
-      font-size: 0.9rem;
-      margin-top: 0.75rem;
-      padding: 0.5rem;
-      border-radius: 0.5rem;
-      transition: all 0.3s ease;
-    }
-    
-    .status-success { background: rgba(34,197,94,0.15); color: var(--success); }
-    .status-error { background: rgba(239,68,68,0.15); color: var(--danger); }
-    
-    .result-box {
-      background: rgba(15,23,42,0.5);
-      border-radius: 1rem;
-      padding: 1.5rem;
-      margin-top: 1.5rem;
-      border: 1px solid rgba(255,255,255,0.1);
-      opacity: 0;
-      transform: translateY(20px);
-      transition: all 0.5s ease;
-    }
-    
-    .result-box.show { opacity: 1; transform: translateY(0); }
-    
-    .result-success {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      margin-bottom: 1.5rem;
-      font-size: 1.1rem;
-      color: var(--success);
-    }
-    
-    .result-success i { animation: scaleIn 0.5s ease; }
-    @keyframes scaleIn { 0% { transform: scale(0); } 70% { transform: scale(1.2); } 100% { transform: scale(1); } }
-    
-    .info-box {
-      background: rgba(15,23,42,0.7);
-      border-radius: 0.75rem;
-      padding: 1rem;
-      margin-top: 1rem;
-      font-family: monospace;
-      font-size: 0.85rem;
-      line-height: 1.6;
-      overflow: auto;
-      max-height: 200px;
-      border: 1px solid rgba(255,255,255,0.1);
-    }
-    
-    details { margin-top: 1rem; }
-    summary { cursor: pointer; padding: 0.5rem; border-radius: 0.5rem; background: rgba(15,23,42,0.5); transition: all 0.3s ease; }
-    summary:hover { background: rgba(15,23,42,0.7); }
-    
-    @media (max-width: 576px) {
-      .card { padding: 1.75rem; }
-      .logo-text { font-size: 1.5rem; }
-      .form-control { padding: 0.875rem 0.875rem 0.875rem 2.75rem; }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Morskoy Vodka : Dive into Taste! | Morskoy Vodka</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #031990; 
+            color: #f1f1f1;
+            margin: 0;
+            padding: 0;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+        .header {
+            background-color: rgba(201, 201, 201, 0.97);
+            color: #1d1e20;
+            padding: 15px 0;
+            text-align: center;
+            border-bottom: 2px solid #f01722;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .nav a {
+            color: #261F1F;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav a:hover {
+            color: #f01722;
+        }
+        .section {
+            padding: 80px 5%;
+            text-align: center;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+        .accent-text {
+            color: #f01722;
+            font-weight: 700;
+        }
+        .italic-accent {
+            font-style: italic;
+        }
+        .cta-button {
+            display: inline-block;
+            background-color: #f01722;
+            color: #fff;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 999px;
+            font-weight: 500;
+            margin-top: 20px;
+            transition: background-color 0.2s ease;
+        }
+        .cta-button.secondary {
+             background-color: #031990;
+             border: 2px solid #f01722;
+        }
+        .cta-button:hover {
+            background-color: #1d1e20;
+        }
+        .cta-button.secondary:hover {
+             background-color: #f01722;
+        }
+        .social-icons a {
+            color: #f1f1f1;
+            margin: 0 10px;
+            font-size: 24px;
+            text-decoration: none;
+        }
+        .social-icons-bali a {
+            color: #c9c9c9;
+            margin: 0 10px;
+            font-size: 1.2em;
+            text-decoration: none;
+            display: block;
+        }
+        .social-icons-bali a:hover {
+            color: #f01722;
+        }
+        .recipe-list {
+            text-align: left;
+            columns: 2;
+            column-gap: 40px;
+            max-width: 800px;
+            margin: 20px auto;
+        }
+        .recipe-list h4 {
+            margin: 15px 0 5px;
+            font-weight: 700;
+            font-size: 1.2em;
+        }
+        .recipe-list p {
+            margin: 0 0 10px;
+            color: rgba(241, 241, 241, 0.8);
+        }
+        .footer {
+            background-color: rgb(3, 25, 144);
+            padding: 40px 5%;
+            text-align: center;
+            border-top: 1px solid #f01722;
+        }
+    </style>
 </head>
 <body>
-  <div class="floating-element"></div>
-  <div class="floating-element"></div>
-  <div class="floating-element"></div>
-  <div class="floating-element"></div>
-  
-  <div class="card">
-    <div class="logo">
-      <div class="logo-icon"><i class="fas fa-globe"></i></div>
-      <div class="logo-text">Create Apk By GyzenLyoraa</div>
+
+    <div class="header">
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+            <h1 style="color: #031990; font-size: 2em; font-weight: 700;">Morskoy Vodka</h1>
+            <nav class="nav">
+                <a href="#home">Home</a>
+                <a href="#bali">Bali</a>
+                <a href="#cocktail">Morskoy Cocktail</a>
+                <a href="#experience">Experience</a>
+            </nav>
+        </div>
     </div>
 
-    <form id="builderForm" autocomplete="off">
-      <div class="form-group">
-        <label class="form-label" for="url">URL Website</label>
-        <div class="form-control-container">
-          <i class="fas fa-link input-icon"></i>
-          <input type="url" id="url" class="form-control" placeholder="https://example.com" required>
+    <div id="home" class="section" style="background-image: url('https://assets.zyrosite.com/m2WarNe6bgT1ZX47/logo-AQEDP5PDDXsxQPq4.png'); background-size: cover; background-position: center; min-height: 100vh; display: flex; align-items: center; justify-content: center; background-blend-mode: multiply; background-color: rgba(0, 0, 0, 0.66);">
+        <div class="container">
+            <h1 style="font-size: 8em; color: #fff;"><span style="font-weight: 700;">Smooth by Nature</span></h1>
+            <p class="body-large" style="font-size: 1.5em; color: rgb(241, 241, 241);">Discover a flavor that connects deeply, leaving you craving more with every sip.</p>
+
+            <div style="margin-top: 100px; display: flex; justify-content: space-between; text-align: left; color: #f1f1f1;">
+                <div style="width: 30%;">
+                    <h4 style="font-size: 1.8em; margin-top: 0;">Mixture of Mystery</h4>
+                    <p>and the power taste of the ocean. it suggest purity, strength, and confidence.</p>
+                </div>
+                <div style="width: 30%;">
+                    <h5 style="font-size: 1.8em; margin-top: 0; text-align: right;">Crafted for Connection</h5>
+                    <p style="text-align: right;">Our vodka creates unforgettable moments that resonate with your spirit and taste.</p>
+                </div>
+                <div style="width: 30%;">
+                    <h6 style="font-size: 1.8em; margin-top: 0;">Taste the Depths</h6>
+                    <p>Dive into flavors that connect with you on a deeper emotional level.</p>
+                </div>
+            </div>
         </div>
-      </div>
-
-      <div class="form-group">
-        <label class="form-label" for="appName">Nama Aplikasi</label>
-        <div class="form-control-container">
-          <i class="fas fa-mobile-alt input-icon"></i>
-          <input type="text" id="appName" class="form-control" placeholder="MyApp" required>
+    </div>
+    
+    <div class="section" style="background-color: #fff;">
+        <div class="container">
+            <h3 style="color: #031990; font-size: 3em;">We honor the process</h3>
+            <p class="body-large" style="color: #031990; max-width: 800px; margin: 20px auto;">
+                with attention to detail in every step to create a taste that dives into you.
+            </p>
+            <div style="display: flex; justify-content: space-between; text-align: right; margin-top: 100px;">
+                <div style="width: 45%;">
+                    <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=372,h=371,fit=crop/m2WarNe6bgT1ZX47/13-AGBnPjoMP7tDWG40.webp" alt="Morskoy Vodka bottle" style="max-width: 100%; height: auto; margin-top: 50px;">
+                </div>
+                <div style="width: 45%; color: #031990; padding-left: 20px;">
+                    <h3 style="font-size: 4em; margin-top: 50px;">
+                        Quality you can <span class="accent-text"><span class="italic-accent">Taste</span></span>, Price you can <span class="accent-text"><span class="italic-accent">Trust</span></span>.
+                    </h3>
+                    <p style="margin-top: 20px;">
+                        Morskoy vodka is a premium spirit, crafted with the finest ingredients and quality. it's a symbol of class, tradition, and modern refinement. Claiming whether enjoyed in neat or in a cocktail, alone or in a group.
+                    </p>
+                </div>
+            </div>
         </div>
-      </div>
-
-      <div class="form-group">
-        <label class="form-label" for="email">Email Kamu</label>
-        <div class="form-control-container">
-          <i class="fas fa-envelope input-icon"></i>
-          <input type="email" id="email" class="form-control" placeholder="you@mail.com" required>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label class="form-label" for="iconFile">Ikon Aplikasi (PNG/JPG, 512x512, max 2MB)</label>
-        <div class="form-control-container">
-          <i class="fas fa-image input-icon"></i>
-          <input type="file" id="iconFile" class="form-control" accept="image/png,image/jpeg,image/jpg" required style="padding-left: 3rem;">
-        </div>
-        <div id="uploadStatus" class="upload-status hidden"></div>
-      </div>
-
-      <button type="submit" class="btn btn-primary" id="submitBtn">
-        <i class="fas fa-hammer"></i> Build APK Premium - GyzenLyoraa
-      </button>
-    </form>
-
-    <div id="progress" class="progress-box hidden">
-      <p><i class="fas fa-spinner fa-spin"></i> <span id="progText">Mengunggah ikon…</span></p>
-      <div class="progress-bar"><div id="progBar"></div></div>
     </div>
 
-    <div id="result" class="result-box hidden">
-      <p class="result-success">
-        <i class="fas fa-check-circle"></i> APK berhasil dibuat!
-      </p>
-      <a id="dlApk" class="btn btn-primary" href="#" download>
-        <i class="fas fa-download"></i> Download APK
-      </a>
-      <details style="margin-top:1rem;">
-        <summary>Info Lainnya</summary>
-        <pre id="keyInfo" class="info-box"></pre>
-      </details>
+    <div id="bali" class="section section-dark">
+        <div class="container">
+            <h1 style="font-size: 3em; color: #fff;">BALI Morskoy Vodka</h1>
+            <h3 style="color: #f1f1f1;">Om Swastiastu</h3>
+            
+            <h2 style="font-size: 3em; color: #f1f1f1;">Promo khusus <span class="accent-text" style="color: #f01722;"><strong>Bali</strong></span></h2>
+            
+            <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=372,h=371,fit=crop/m2WarNe6bgT1ZX47/13-AGBnPjoMP7tDWG40.webp" alt="Morskoy Vodka Bali" style="max-width: 300px; height: auto; margin: 30px auto; display: block;">
+            
+            <p class="body-large" style="max-width: 800px; margin: 30px auto; color: rgba(201, 201, 201, 0.97);">
+                Melanjutkan komitmen Morskoy Vodka Indonesia untuk berada diseluruh Kota di Indonesia, Kami dari tim Morskoy Vodka Bali melakukan Promo khusus Bali, Harga special untuk memperkenalkan produk Vodka Morskoy ke semua Penikmat Vodka di Bali , untuk pemesanan khusus Bali bisa langsung via link/logo <span style="font-weight: 700"><strong>Morskoy Bali</strong></span> di bawah ini:
+            </p>
+            
+            <a href="https://g.co/kgs/Zi23D7E" target="_blank" class="cta-button secondary">Join Morskoy Bali , Click here</a>
+            
+            <div style="display: flex; justify-content: center; margin: 30px auto; max-width: 600px;">
+                <div style="margin-right: 40px; text-align: left;">
+                    <h4 style="margin-top: 0; color: #f1f1f1;">Tautan Pemesanan/Toko Online</h4>
+                    <a href="https://www.tokopedia.com/" target="_blank" class="social-icons-bali" style="margin-bottom: 20px;">
+                        <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=60,h=60,fit=crop/m2WarNe6bgT1ZX47/tokopedia-38854-mxBMJGX7q7uVOE7a.png" alt="Tokopedia" style="width: 48px; display: inline-block; vertical-align: middle; margin-right: 10px;">
+                        Tokopedia
+                    </a>
+                    <a href="https://shopee.co.id/" target="_blank" class="social-icons-bali">
+                        <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=47,h=70,fit=crop/m2WarNe6bgT1ZX47/shopee-logo-31419-AQEDKzz3EVSxOz7N.png" alt="Shopee" style="width: 48px; display: inline-block; vertical-align: middle; margin-right: 10px;">
+                        Shopee
+                    </a>
+                </div>
+                <div style="text-align: left;">
+                    <h4 style="margin-top: 0; color: #f1f1f1;">Kontak dan Media Sosial Bali</h4>
+                    <a href="https://www.instagram.com/morskoy_vodka_bali?igsh=MXJ1MjNjZHdoNmMydw==" target="_blank" class="social-icons-bali" style="color: rgba(201, 201, 201, 0.97);">Morskoy_vodka_bali / Instagram</a>
+                    <a href="https://tiktok.com/@morskoy.vodka.bali" target="_blank" class="social-icons-bali" style="color: rgba(201, 201, 201, 0.97);">Morskoy.vodka.bali / TikTok</a>
+                    <a href="https://www.facebook.com/share/167YKn2vAj/" target="_blank" class="social-icons-bali" style="color: rgba(201, 201, 201, 0.97);">Morskoy vodka Bali / Facebook</a>
+                    <a href="https://wa.me/6282338888427" target="_blank" class="social-icons-bali" style="color: rgba(201, 201, 201, 0.97);">Morskoy vodka Bali / Whatsapp</a>
+                </div>
+            </div>
+            
+            <p class="body-large" style="max-width: 800px; margin: 30px auto; color: rgba(201, 201, 201, 0.97);">
+                dan jika ada pertanyaan dan informasi lebih lanjut bisa langsung chat melalui whatsapp/onlineshop <span style="font-weight: 700"><strong><em><u><a target="_blank" rel="nofollow" href="https://g.co/kgs/Zi23D7E" style="color: rgba(201, 201, 201, 0.97);">Morskoy Vodka Bali</a></u></em></strong></span>, <em>Kirang langkung, nunas sinampura, </em><span style="font-weight: 700"><strong><em>Om Santi Santi Santi.</em></strong></span>
+            </p>
+        </div>
     </div>
 
-    <div class="alert hidden" id="errorAlert">
-      <i class="fas fa-exclamation-circle"></i>
-      <span id="errorMsg"></span>
+    <div id="cocktail" class="section" style="background-color: #031990; background-image: linear-gradient(135deg, #261F1F, rgb(143, 17, 168));">
+        <div class="container">
+            <h1 style="font-size: 3em;"><span style="font-weight: 700;"><strong>Morskoy Cocktail Recipe:</strong></span></h1>
+            <p class="body-large" style="color: rgb(241, 241, 241); max-width: 800px; margin: 20px auto;">
+                Temukan resep cocktails vodka yang telah diseleksi oleh tim Morskoy. Nikmati berbagai pilihan resep cocktails yang simple dan mudah dibuat di mana saja, cocok untuk semua penggemar vodka cocktails!
+            </p>
+
+            <h2 style="color: rgb(255, 255, 255); margin-top: 40px;">2 Ingedrients</h2>
+            
+            <div class="recipe-list">
+                <div>
+                    <h4><span class="accent-text">Morskoy</span> Soda</h4>
+                    <p>Bahan: 50 ml Morskoy, 100 ml soda water</p>
+                    <p style="margin-bottom: 20px;">Cara membuat: Isi gelas dengan es, tuang Morskoy, tambahkan soda water, aduk perlahan.</p>
+
+                    <h4><span class="accent-text">Morskoy</span> Tonic</h4>
+                    <p>Bahan: 50 ml Morskoy, 100 ml tonic water</p>
+                    <p style="margin-bottom: 20px;">Cara membuat: Campur Morskoy dan tonic water di gelas berisi es, aduk ringan.</p>
+
+                    <h4><span class="accent-text">Morskoy</span> Orange (Screwdriver)</h4>
+                    <p>Bahan: 50 ml Morskoy, 100 ml jus jeruk</p>
+                    <p style="margin-bottom: 20px;">Cara membuat: Tuang Morskoy dan jus jeruk ke gelas berisi es, aduk hingga rata.</p>
+
+                    <h4><span class="accent-text">Morskoy</span> Cranberry</h4>
+                    <p>Bahan: 50 ml Morskoy, 100 ml jus cranberry</p>
+                    <p style="margin-bottom: 20px;">Cara membuat: Isi gelas dengan es, tuang Morskoy dan jus cranberry, aduk sebentar.</p>
+                    
+                    <h4><span class="accent-text">Morskoy</span> Lime</h4>
+                    <p>Bahan: 50 ml Morskoy, 20 ml jus jeruk nipis</p>
+                    <p style="margin-bottom: 20px;">Cara membuat: Campur Morskoy dan jus jeruk nipis di gelas dengan es, aduk hingga menyatu.</p>
+
+                    <h4><span class="accent-text">Morskoy</span> Ginger</h4>
+                    <p>Bahan: 50 ml Morskoy, 100 ml ginger ale</p>
+                    <p style="margin-bottom: 20px;">Cara membuat: Tuang Morskoy dan ginger ale ke gelas berisi es, aduk perlahan.</p>
+
+                    <h4><span class="accent-text">Morskoy</span> Cola</h4>
+                    <p>Bahan: 50 ml Morskoy, 100 ml cola</p>
+                    <p style="margin-bottom: 20px;">Cara membuat: Isi gelas dengan es, tambahkan Morskoy dan cola, aduk ringan.</p>
+
+                    <h4><span class="accent-text">Morskoy</span> Apple</h4>
+                    <p>Bahan: 50 ml Morskoy, 100 ml jus apel</p>
+                    <p style="margin-bottom: 20px;">Cara membuat: Campur Morskoy dan jus apel di gelas berisi es, aduk hingga merata.</p>
+
+                    <h4><span class="accent-text">Morskoy</span> Lemon</h4>
+                    <p>Bahan: 50 ml Morskoy, 20 ml jus lemon</p>
+                    <p style="margin-bottom: 20px;">Cara membuat: Tuang Morskoy dan jus lemon ke gelas dengan es, aduk cepat.</p>
+                </div>
+                <div>
+                    <h4><span class="accent-text">Morskoy</span> Sprite</h4>
+                    <p>Bahan: 50 ml Morskoy, 100 ml Sprite</p>
+                    <p style="margin-bottom: 20px;">Cara membuat: Isi gelas dengan es, tuang Morskoy dan Sprite, aduk perlahan.</p>
+
+                    <h4><span class="accent-text">Morskoy</span> Pineapple</h4>
+                    <p>Bahan: 50 ml Morskoy, 100 ml jus nanas</p>
+                    <p style="margin-bottom: 20px;">Cara membuat: Tuang Morskoy dan jus nanas ke gelas berisi es, aduk hingga tercampur.</p>
+
+                    <h4><span class="accent-text">Morskoy</span> Grapefruit</h4>
+                    <p>Bahan: 50 ml Morskoy, 100 ml jus grapefruit</p>
+                    <p style="margin-bottom: 20px;">Cara membuat: Campur Morskoy dan jus grapefruit di gelas dengan es, aduk ringan.</p>
+
+                    <h4><span class="accent-text">Morskoy</span> Tomato</h4>
+                    <p>Bahan: 50 ml Morskoy, 100 ml jus tomat</p>
+                    <p style="margin-bottom: 20px;">Cara membuat: Isi gelas dengan es, tuang Morskoy dan jus tomat, aduk perlahan.</p>
+
+                    <h4><span class="accent-text">Morskoy</span> Mango</h4>
+                    <p>Bahan: 50 ml Morskoy, 100 ml jus mangga</p>
+                    <p style="margin-bottom: 20px;">Cara membuat: Tuang Morskoy dan jus mangga ke gelas berisi es, aduk hingga rata.</p>
+
+                    <h4><span class="accent-text">Morskoy</span> Honey</h4>
+                    <p>Bahan: 50 ml Morskoy, 20 ml madu cair</p>
+                    <p style="margin-bottom: 20px;">Cara membuat: Campur Morskoy dan madu cair di gelas, tambahkan es, aduk hingga madu larut.</p>
+
+                    <h4><span class="accent-text">Morskoy</span> Pomegranate</h4>
+                    <p>Bahan: 50 ml Morskoy, 100 ml jus delima</p>
+                    <p style="margin-bottom: 20px;">Cara membuat: Isi gelas dengan es, tuang Morskoy dan jus delima, aduk sebentar.</p>
+
+                    <h4><span class="accent-text">Morskoy</span> Peach</h4>
+                    <p>Bahan: 50 ml Morskoy, 100 ml jus persik</p>
+                    <p style="margin-bottom: 20px;">Cara membuat: Campur Morskoy dan jus persik di gelas berisi es, aduk perlahan.</p>
+
+                    <h4><span class="accent-text">Morskoy</span> Coconut</h4>
+                    <p>Bahan: 50 ml Morskoy, 100 ml air kelapa</p>
+                    <p style="margin-bottom: 20px;">Cara membuat: Tuang Morskoy dan air kelapa ke gelas dengan es, aduk hingga menyatu.</p>
+
+                    <h4><span class="accent-text">Morskoy</span> Mint</h4>
+                    <p>Bahan: 50 ml Morskoy, 20 ml sirup mint</p>
+                    <p style="margin-bottom: 20px;">Cara membuat: Campur Morskoy dan sirup mint di gelas berisi es, aduk hingga tercampur rata.</p>
+
+                    <h4><span class="accent-text">Morskoy</span> Berry</h4>
+                    <p>Bahan: 50 ml Morskoy, 100 ml jus beri campuran (mixed berry)</p>
+                    <p style="margin-bottom: 20px;">Cara membuat: Isi gelas dengan es, tuang Morskoy dan jus beri, aduk ringan.</p>
+                </div>
+            </div>
+            
+            <p style="color: rgb(241, 241, 241); margin-top: 40px;">Semua resep ini fleksibel—kamu bisa menyesuaikan takaran sesuai selera. Selamat mencoba dan nikmati. <br>Selalu akan update terbaru dari Recipe Cokctails Morskoy.</p>
+
+            <h2 style="color: rgb(255, 255, 255); margin-top: 40px;">3 Ingedrients</h2>
+            <p class="body-large" style="color: rgb(241, 241, 241)">Coming soon.......</p>
+        </div>
+    </div>
+
+    <div id="experience" class="section" style="background-image: linear-gradient(135deg, #261F1F, rgb(143, 17, 168)); background-blend-mode: multiply; background-color: rgba(0, 0, 0, 0.9);">
+        <div class="container">
+            <h1 style="font-size: 5em;">Coming soon</h1>
+            <h2 style="font-size: 2em; color: rgba(201, 201, 201, 0.97); max-width: 800px; margin: 20px auto;">
+                Share your experience drinkin’ Morskoy Vodka, and snag some awesome prizes that’ll be drawn every month, y’all!
+            </h2>
+            
+            <h4 style="margin-top: 40px; color: #f1f1f1;">Testimoni</h4>
+            <p class="body-large" style="margin-top: 30px; font-size: 1.2em;">
+                ★★★★★
+            </p>
+            <p class="body-large" style="max-width: 600px; margin: 0 auto; font-size: 1.2em;">
+                Morskoy vodka is an extraordinary experience! The flavors resonate on a deeper level, leaving me wanting more every sip. Highly recommend it to everyone!
+            </p>
+            <p class="body" style="margin-top: 5px;">Alex L.</p>
+        </div>
     </div>
 
     <div class="footer">
-      Powered by <a href="https://api.fikmydomainsz.xyz" target="_blank">GyzenLyoraa</a>
+        <div class="container">
+            <h6 style="color: #fff; margin-bottom: 20px;">We are committed to expand the product nationwide, to every corner of the city.</h6>
+            <h4 style="color: rgb(241, 241, 241); margin: 20px 0 10px;">Join our movement:</h4>
+            
+            <p class="body" style="color: rgb(241, 241, 241); margin-bottom: 20px;">Click link/logo bellow:</p>
+            
+            <div class="social-icons" style="margin-bottom: 20px;">
+                <a href="https://www.instagram.com/morskoyvodka.id/" target="_blank" title="Instagram Morskoy Vodka ID">📸</a>
+                <a href="https://www.tiktok.com/@morskoy.official" target="_blank" title="TikTok Morskoy Official">🎵</a>
+                <a href="https://wa.me/+628116168911" target="_blank" title="WhatsApp Morskoy Vodka ID">💬</a>
+            </div>
+
+            <p class="body" style="color: rgb(241, 241, 241); font-size: 0.8em;">© 2025. Morskoy Vodka Indonesia.</p>
+        </div>
     </div>
-  </div>
 
-  <script>
-    const $ = id => document.getElementById(id);
-    const form = $('builderForm');
-    const progr = $('progress');
-    const result = $('result');
-    const btn = $('submitBtn');
-    const progText = $('progText');
-    const progBar = $('progBar');
-    const errorAlert = $('errorAlert');
-    const errorMsg = $('errorMsg');
-    const uploadStatus = $('uploadStatus');
-
-    function showError(message) {
-      errorMsg.textContent = message;
-      errorAlert.classList.remove('hidden');
-      setTimeout(() => errorAlert.classList.add('hidden'), 6000);
-    }
-
-    async function uploadIcon(file) {
-      uploadStatus.classList.remove('hidden');
-      uploadStatus.textContent = 'Mengunggah ikon...';
-      uploadStatus.className = 'upload-status';
-
-      // 1. LayarCAD (REKOMENDASI)
-      try {
-        uploadStatus.textContent = 'Mengunggah ke LayarCAD...';
-        const formData = new FormData();
-        formData.append('file', file);
-
-        const controller = new AbortController();
-        const timeoutId = setTimeout(() => controller.abort(), 20000);
-
-        const response = await fetch('https://api.layarcad.com/upload', {
-          method: 'POST',
-          body: formData,
-          signal: controller.signal
-        });
-
-        clearTimeout(timeoutId);
-
-        if (!response.ok) throw new Error('Gagal di LayarCAD');
-
-        const data = await response.json();
-        if (data.status && data.url) {
-          uploadStatus.textContent = 'Berhasil di LayarCAD!';
-          uploadStatus.classList.add('status-success');
-          return data.url;
-        }
-      } catch (err) {
-        console.warn('LayarCAD gagal:', err);
-      }
-
-      // 2. Catbox (Fallback)
-      try {
-        uploadStatus.textContent = 'Mencoba Catbox...';
-        const formData = new FormData();
-        formData.append('reqtype', 'fileupload');
-        formData.append('fileToUpload', file);
-
-        const controller = new AbortController();
-        const timeoutId = setTimeout(() => controller.abort(), 20000);
-
-        const response = await fetch('https://catbox.moe/user/api.php', {
-          method: 'POST',
-          body: formData,
-          signal: controller.signal
-        });
-
-        clearTimeout(timeoutId);
-
-        if (response.ok) {
-          const url = await response.text();
-          if (url.startsWith('https://')) {
-            uploadStatus.textContent = 'Berhasil di Catbox!';
-            uploadStatus.classList.add('status-success');
-            return url;
-          }
-        }
-      } catch (err) {
-        console.warn('Catbox gagal:', err);
-      }
-
-      throw new Error('Semua layanan upload gagal. Coba lagi atau gunakan WiFi lain.');
-    }
-
-    function animateProgress() {
-      const start = Date.now();
-      const iv = setInterval(() => {
-        const elapsed = Date.now() - start;
-        const pct = Math.min(90, Math.round((elapsed / 180000) * 100));
-        progBar.style.width = pct + '%';
-        if (pct >= 90) clearInterval(iv);
-      }, 1000);
-      return () => clearInterval(iv);
-    }
-
-    // Validasi ikon saat dipilih
-    $('iconFile').addEventListener('change', function() {
-      const file = this.files[0];
-      uploadStatus.classList.add('hidden');
-
-      if (!file) return;
-
-      const validTypes = ['image/png', 'image/jpeg', 'image/jpg'];
-      if (!validTypes.includes(file.type)) {
-        showError('Hanya PNG atau JPG!');
-        this.value = '';
-        return;
-      }
-
-      if (file.size > 2 * 1024 * 1024) {
-        showError('Ukuran maksimal 2MB!');
-        this.value = '';
-        return;
-      }
-
-      const img = new Image();
-      img.onload = () => {
-        if (img.width < 512 || img.height < 512) {
-          showError('Ikon minimal 512x512 px!');
-        }
-      };
-      img.src = URL.createObjectURL(file);
-
-      uploadStatus.classList.remove('hidden');
-      uploadStatus.textContent = `Siap: ${file.name} (${(file.size/1024).toFixed(1)} KB)`;
-      uploadStatus.className = 'upload-status status-success';
-    });
-
-    form.addEventListener('submit', async e => {
-      e.preventDefault();
-      btn.disabled = true;
-      errorAlert.classList.add('hidden');
-      progr.classList.remove('hidden');
-      progr.classList.add('show');
-      result.classList.remove('show');
-      result.classList.add('hidden');
-      const stopProg = animateProgress();
-
-      try {
-        const url = $('url').value.trim();
-        const appName = $('appName').value.trim();
-        const email = $('email').value.trim();
-        const imgFile = $('iconFile').files[0];
-
-        if (!imgFile) throw new Error('Pilih ikon dulu');
-        if (!url || !appName || !email) throw new Error('Semua field wajib diisi');
-
-        try { new URL(url); } catch { throw new Error('URL tidak valid'); }
-
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(email)) throw new Error('Email tidak valid');
-
-        progText.textContent = 'Mengunggah ikon...';
-        const iconUrl = await uploadIcon(imgFile);
-
-        progText.textContent = 'Membangun APK...';
-        const apiUrl = `https://api.fikmydomainsz.xyz/tools/toapp/build-complete?url=${encodeURIComponent(url)}&email=${encodeURIComponent(email)}&appName=${encodeURIComponent(appName)}&appIcon=${encodeURIComponent(iconUrl)}`;
-
-        const controller = new AbortController();
-        const timeoutId = setTimeout(() => controller.abort(), 300000);
-
-        const response = await fetch(apiUrl, { signal: controller.signal });
-        clearTimeout(timeoutId);
-
-        if (!response.ok) throw new Error(`Server error: ${response.status}`);
-
-        const job = await response.json();
-        if (!job.status) throw new Error(job.error || 'Build gagal');
-
-        stopProg();
-        progBar.style.width = '100%';
-
-        setTimeout(() => {
-          $('dlApk').href = job.downloadUrl;
-          $('keyInfo').textContent = `storePass : ${job.storePass}\nkeyPass   : ${job.keyPass}\nkeySha    : ${job.keySha}\npackage   : ${job.packageName}`;
-
-          progr.classList.remove('show');
-          setTimeout(() => {
-            progr.classList.add('hidden');
-            result.classList.remove('hidden');
-            setTimeout(() => result.classList.add('show'), 50);
-          }, 500);
-        }, 800);
-
-      } catch (err) {
-        stopProg();
-        progr.classList.remove('show');
-        setTimeout(() => progr.classList.add('hidden'), 500);
-        btn.disabled = false;
-        showError(err.message.includes('abort') ? 'Timeout! Coba lagi.' : err.message);
-        console.error(err);
-      }
-    });
-  </script>
 </body>
 </html>
