@@ -1,210 +1,266 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Morskoy Vodka : Dive into Taste! | Morskoy Vodka</title>
+    <title>AUTO SPLITER UNIVERSAL - DESAIN RAPIH</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    
     <style>
+        /* Variabel Warna Modern Neon Dark */
+        :root {
+            --bg-dark: #0A0A10; /* Latar Belakang Sangat Gelap */
+            --card-bg: #1A1A22; /* Latar Belakang Card */
+            --text-light: #E0E0E6;
+            --neon-accent: #A855F7; /* Ungu Neon Utama yang Lebih Lembut */
+            --neon-glow: #C084FC; /* Warna Glow */
+            --danger: #EF4444;
+            --input-border: #3F3F46;
+        }
+
         body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
             font-family: 'Poppins', sans-serif;
-            background-color: #031990; 
-            color: #f1f1f1;
             margin: 0;
-            padding: 0;
-            line-height: 1.5;
-            scroll-behavior: smooth;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            font-size: 14px;
         }
-        .header {
-            background-color: rgba(201, 201, 201, 0.97);
-            color: #1d1e20;
-            padding: 15px 0;
-            text-align: center;
-            border-bottom: 2px solid #f01722;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-        .nav a {
-            color: #261F1F;
-            text-decoration: none;
-            margin: 0 15px;
-            font-weight: 500;
-            transition: color 0.2s;
-        }
-        .nav a:hover {
-            color: #f01722;
-        }
-        .section {
-            padding: 80px 5%;
-            text-align: center;
-        }
+
         .container {
-            max-width: 1200px;
-            margin: 0 auto;
+            width: 100%;
+            max-width: 900px;
+            padding: 30px;
+            border-radius: 12px;
         }
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Playfair Display', serif;
-            font-weight: 700;
-            line-height: 1.3;
-        }
-        .accent-text {
-            color: #f01722;
-            font-weight: 700;
-        }
-        .italic-accent {
-            font-style: italic;
-        }
-        .cta-button {
-            display: inline-block;
-            background-color: #f01722;
-            color: #fff;
-            padding: 15px 30px;
-            text-decoration: none;
-            border-radius: 999px;
-            font-weight: 500;
-            margin-top: 20px;
-            transition: background-color 0.2s ease;
-        }
-        .cta-button.secondary {
-             background-color: #031990;
-             border: 2px solid #f01722;
-        }
-        .cta-button:hover {
-            background-color: #1d1e20;
-        }
-        .cta-button.secondary:hover {
-             background-color: #f01722;
-        }
-        .social-icons a {
-            color: #f1f1f1;
-            margin: 0 10px;
-            font-size: 24px;
-            text-decoration: none;
-        }
-        .social-icons-bali a {
-            color: #c9c9c9;
-            margin: 0 10px;
-            font-size: 1.2em;
-            text-decoration: none;
-            display: block;
-        }
-        .social-icons-bali a:hover {
-            color: #f01722;
-        }
-        .recipe-list {
-            text-align: left;
-            columns: 2;
-            column-gap: 40px;
-            max-width: 800px;
-            margin: 20px auto;
-        }
-        .recipe-list h4 {
-            margin: 15px 0 5px;
-            font-weight: 700;
-            font-size: 1.2em;
-        }
-        .recipe-list p {
-            margin: 0 0 10px;
-            color: rgba(241, 241, 241, 0.8);
-        }
-        .footer {
-            background-color: rgb(3, 25, 144);
-            padding: 40px 5%;
+
+        h1 {
             text-align: center;
-            border-top: 1px solid #f01722;
+            font-size: 2.2em;
+            color: var(--neon-accent);
+            text-shadow: 0 0 10px rgba(168, 85, 247, 0.5);
+            margin-bottom: 40px;
+            font-weight: 700;
+        }
+
+        .main-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+
+        .menu-section {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 10px;
+            border: 1px solid var(--input-border);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s;
+        }
+        
+        .menu-section:hover {
+            transform: translateY(-3px);
+            border-color: var(--neon-accent);
+        }
+
+        h2 {
+            font-size: 1.3em;
+            color: var(--neon-glow);
+            border-bottom: 2px solid var(--neon-accent);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+
+        textarea {
+            width: 100%;
+            height: 150px;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid var(--input-border);
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            font-size: 0.9em;
+            border-radius: 6px;
+            box-sizing: border-box;
+            resize: vertical;
+            transition: border-color 0.3s, box-shadow 0.3s;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 400;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: var(--neon-accent);
+            box-shadow: 0 0 0 2px rgba(168, 85, 247, 0.5);
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px; /* Memberi jarak ke output */
+        }
+
+        button {
+            flex-grow: 1; /* Agar tombol memiliki lebar yang sama */
+            background-color: var(--neon-accent);
+            color: var(--bg-dark);
+            border: none;
+            padding: 12px 15px;
+            font-size: 1em;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: background-color 0.3s, transform 0.1s, box-shadow 0.3s;
+            font-weight: 700;
+        }
+
+        button:hover {
+            background-color: var(--neon-glow);
+            transform: translateY(-1px);
+        }
+
+        button.clear-btn {
+            background-color: var(--danger);
+            color: var(--text-light);
+        }
+
+        button.clear-btn:hover {
+            background-color: #DC2626;
+        }
+
+        /* Responsive design */
+        @media (min-width: 768px) {
+            .main-grid {
+                grid-template-columns: 1fr 1fr;
+            }
         }
     </style>
 </head>
 <body>
+    <div class="container">
+        <h1>🚀 AUTO SPLITER UNIVERSAL</h1>
 
-    <div class="header">
-        <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
-            <h1 style="color: #031990; font-size: 2em; font-weight: 700;">Morskoy Vodka</h1>
-            <nav class="nav">
-                <a href="#home">Home</a>
-                <a href="#bali">Bali</a>
-                <a href="#cocktail">DONE LEK</a>
-                <a href="#experience">Experience</a>
-            </nav>
-        </div>
-    </div>
-
-    <div id="home" class="section" style="background-image: url('https://assets.zyrosite.com/m2WarNe6bgT1ZX47/logo-AQEDP5PDDXsxQPq4.png'); background-size: cover; background-position: center; min-height: 100vh; display: flex; align-items: center; justify-content: center; background-blend-mode: multiply; background-color: rgba(0, 0, 0, 0.66);">
-        <div class="container">
-            <h1 style="font-size: 8em; color: #fff;"><span style="font-weight: 700;">Smooth by Nature</span></h1>
-            <p class="body-large" style="font-size: 1.5em; color: rgb(241, 241, 241);">Discover a flavor that connects deeply, leaving you craving more with every sip.</p>
-
-            <div style="margin-top: 100px; display: flex; justify-content: space-between; text-align: left; color: #f1f1f1;">
-                <div style="width: 30%;">
-                    <h4 style="font-size: 1.8em; margin-top: 0;">Mixture of Mystery</h4>
-                    <p>and the power taste of the ocean. it suggest purity, strength, and confidence.</p>
+        <div class="main-grid">
+            
+            <div class="menu-section">
+                <h2>1. SPLITTER DARI URL LENGKAP</h2>
+                <label for="input1">INPUT (Contoh: https://domain.com:2083:login:pass)</label>
+                <textarea id="input1" placeholder="Masukkan daftar URL di sini, pisahkan dengan baris baru..."></textarea>
+                
+                <div class="button-group">
+                    <button onclick="processMenu1()">SPLIT & KONVERSI</button>
+                    <button class="clear-btn" onclick="clearTextareas('input1', 'output1')">BERSIHKAN</button>
                 </div>
-                <div style="width: 30%;">
-                    <h5 style="font-size: 1.8em; margin-top: 0; text-align: right;">Crafted for Connection</h5>
-                    <p style="text-align: right;">Our vodka creates unforgettable moments that resonate with your spirit and taste.</p>
-                </div>
-                <div style="width: 30%;">
-                    <h6 style="font-size: 1.8em; margin-top: 0;">Taste the Depths</h6>
-                    <p>Dive into flavors that connect with you on a deeper emotional level.</p>
+                
+                <div class="output-area">
+                    <label for="output1">OUTPUT (Format: https://domain.com:2083|login|pass)</label>
+                    <textarea id="output1" readonly></textarea>
                 </div>
             </div>
-        </div>
-    </div>
-    
-    <div class="section" style="background-color: #fff;">
-        <div class="container">
-            <h3 style="color: #031990; font-size: 3em;">We honor the process</h3>
-            <p class="body-large" style="color: #031990; max-width: 800px; margin: 20px auto;">
-                with attention to detail in every step to create a taste that dives into you.
-            </p>
-            <div style="display: flex; justify-content: space-between; text-align: right; margin-top: 100px;">
-                <div style="width: 45%;">
-                    <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=372,h=371,fit=crop/m2WarNe6bgT1ZX47/13-AGBnPjoMP7tDWG40.webp" alt="Morskoy Vodka bottle" style="max-width: 100%; height: auto; margin-top: 50px;">
+
+            <div class="menu-section">
+                <h2>2. TAMBAH HTTPS & SPLITTER</h2>
+                <label for="input2">INPUT (Contoh: domain.com:2083:login:pass)</label>
+                <textarea id="input2" placeholder="Masukkan daftar domain/entri di sini, pisahkan dengan baris baru..."></textarea>
+                
+                <div class="button-group">
+                    <button onclick="processMenu2()">TAMBAH HTTPS & SPLIT</button>
+                    <button class="clear-btn" onclick="clearTextareas('input2', 'output2')">BERSIHKAN</button>
                 </div>
-                <div style="width: 45%; color: #031990; padding-left: 20px;">
-                    <h3 style="font-size: 4em; margin-top: 50px;">
-                        Quality you can <span class="accent-text"><span class="italic-accent">Taste</span></span>, Price you can <span class="accent-text"><span class="italic-accent">Trust</span></span>.
-                    </h3>
-                    <p style="margin-top: 20px;">
-                        Morskoy vodka is a premium spirit, crafted with the finest ingredients and quality. it's a symbol of class, tradition, and modern refinement. Claiming whether enjoyed in neat or in a cocktail, alone or in a group.
-                    </p>
+
+                <div class="output-area">
+                    <label for="output2">OUTPUT (Format: https://domain.com:2083|login|pass)</label>
+                    <textarea id="output2" readonly></textarea>
                 </div>
             </div>
+            
         </div>
     </div>
 
-    <div id="bali" class="section section-dark">
-        <div class="container">
-            <h1 style="font-size: 3em; color: #fff;">BALI Morskoy Vodka</h1>
-            <h3 style="color: #f1f1f1;">Om Swastiastu</h3>
+    <script>
+        /**
+         * Fungsi untuk membersihkan textarea.
+         */
+        function clearTextareas(inputId, outputId) {
+            document.getElementById(inputId).value = '';
+            document.getElementById(outputId).value = '';
+        }
+
+        /**
+         * Proses konversi untuk Menu 1.
+         * https://domain.com:login:pass -> https://domain.com:|login|pass
+         */
+        function processMenu1() {
+            const input = document.getElementById('input1').value;
+            const lines = input.split('\n').filter(line => line.trim() !== '');
             
-            <h2 style="font-size: 3em; color: #f1f1f1;">Promo khusus <span class="accent-text" style="color: #f01722;"><strong>Bali</strong></span></h2>
+            const processedLines = lines.map(line => {
+                const schemeMatch = line.match(/^(https?:\/\/)?(.*)$/i);
+                if (!schemeMatch) return line; 
+                
+                const scheme = schemeMatch[1] || ''; 
+                let data = schemeMatch[2]; 
+                
+                // Cek jika formatnya DOMAIN:LOGIN:PASS (3 bagian), tambahkan port kosong ' |'
+                let parts = data.split(':');
+                if (parts.length === 3) {
+                    // domain.com, login, pass. Kita masukkan port kosong
+                    // Contoh: domain.com:login:pass -> domain.com:|login:pass
+                    data = parts[0] + ':|' + parts[1] + ':' + parts[2];
+                }
+                
+                // Ganti semua ':' menjadi '|'
+                data = data.replace(/:/g, '|');
+                
+                return scheme + data;
+            });
+
+            document.getElementById('output1').value = processedLines.join('\n');
+        }
+
+        /**
+         * Proses konversi untuk Menu 2.
+         * domain.com:login:pass -> https://domain.com:|login|pass
+         */
+        function processMenu2() {
+            const input = document.getElementById('input2').value;
+            const lines = input.split('\n').filter(line => line.trim() !== '');
             
-            <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=372,h=371,fit=crop/m2WarNe6bgT1ZX47/13-AGBnPjoMP7tDWG40.webp" alt="Morskoy Vodka Bali" style="max-width: 300px; height: auto; margin: 30px auto; display: block;">
-            
-            <p class="body-large" style="max-width: 800px; margin: 30px auto; color: rgba(201, 201, 201, 0.97);">
-                Melanjutkan komitmen Morskoy Vodka Indonesia untuk berada diseluruh Kota di Indonesia, Kami dari tim Morskoy Vodka Bali melakukan Promo khusus Bali, Harga special untuk memperkenalkan produk Vodka Morskoy ke semua Penikmat Vodka di Bali , untuk pemesanan khusus Bali bisa langsung via link/logo <span style="font-weight: 700"><strong>Morskoy Bali</strong></span> di bawah ini:
-            </p>
-            
-            <a href="https://g.co/kgs/Zi23D7E" target="_blank" class="cta-button secondary">Join Morskoy Bali , Click here</a>
-            
-            <div style="display: flex; justify-content: center; margin: 30px auto; max-width: 600px;">
-                <div style="margin-right: 40px; text-align: left;">
-                    <h4 style="margin-top: 0; color: #f1f1f1;">Tautan Pemesanan/Toko Online</h4>
-                    <a href="https://www.tokopedia.com/" target="_blank" class="social-icons-bali" style="margin-bottom: 20px;">
-                        <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=60,h=60,fit=crop/m2WarNe6bgT1ZX47/tokopedia-38854-mxBMJGX7q7uVOE7a.png" alt="Tokopedia" style="width: 48px; display: inline-block; vertical-align: middle; margin-right: 10px;">
-                        Tokopedia
-                    </a>
-                    <a href="https://shopee.co.id/" target="_blank" class="social-icons-bali">
-                        <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=47,h=70,fit=crop/m2WarNe6bgT1ZX47/shopee-logo-31419-AQEDKzz3EVSxOz7N.png" alt="Shopee" style="width: 48px; display: inline-block; vertical-align: middle; margin-right: 10px;">
-                        Shopee
-                    </a>
-                </div>
-                <div style="text-align: left;">
-                    <h4 style="margin-top: 0; color: #f1f1f1;">Kontak dan Media Sosial Bali</h4>
-                    <a href="https://www.instagram.com/morskoy_vodka_bali?igsh=MXJ1MjNjZHdoNmMydw==" target="_blank" class="social-icons-bali" style="color: rgba(201, 201, 201, 0.97);">Morskoy_vodka_bali / Instagram</a>
-                    <a href="https://tiktok.com/@morskoy.vodka.bali" target="_blank" class="social-icons-bali" style="color: rgba(201, 201, 201, 0.97);">Morskoy.vodka.bali / TikTok</a>
-                    <a href="https://www.facebook.com/share/167YKn2vAj/" target="_blank" class="social-icons-bali" style="color: rgba(201, 201, 201, 0.97);">Morskoy vodka Bali / Facebook</a>
+            const processedLines = lines.map(line => {
+                let data = line; 
+
+                // Cek jika formatnya DOMAIN:LOGIN:PASS (3 bagian), tambahkan port kosong ' |'
+                let parts = data.split(':');
+                if (parts.length === 3) {
+                    data = parts[0] + ':|' + parts[1] + ':' + parts[2];
+                }
+                
+                // Ganti semua ':' menjadi '|'
+                data = data.replace(/:/g, '|');
+                
+                // Tambahkan skema HTTPS:// di awal
+                return 'https://' + data;
+            });
+
+            document.getElementById('output2').value = processedLines.join('\n');
+        }
+    </script>
+</body>
+</html>
+et="_blank" class="social-icons-bali" style="color: rgba(201, 201, 201, 0.97);">Morskoy vodka Bali / Facebook</a>
                     <a href="https://wa.me/6282338888427" target="_blank" class="social-icons-bali" style="color: rgba(201, 201, 201, 0.97);">Morskoy vodka Bali / Whatsapp</a>
                 </div>
             </div>
